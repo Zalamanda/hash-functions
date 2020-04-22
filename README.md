@@ -8,10 +8,10 @@ void md2(const void *in, size_t inlen, void *out);
 void md5(const void *in, size_t inlen, void *out);
 void sha1(const void *in, size_t inlen, void *out);
 void sha256(const void *in, size_t inlen, void *out);
-void sha3(const void *in, size_t inlen, void *out, int outbitlen);
-void keccak(const void *in, size_t inlen, void *out, int outbitlen);
-void blake2b(const void *in, size_t inlen, const void *key, int keylen, void *out, int outbitlen);
-   /* for keyless blake2b, set (key = NULL) and (keylen = 0) */
+void sha3(const void *in, size_t inlen, void *out, int outlen);
+void keccak(const void *in, size_t inlen, void *out, int outlen);
+void blake2b(const void *in, size_t inlen, const void *key, int keylen, void *out, int outlen);
+   /* for keyless blake2b, simply set (key = NULL) and (keylen = 0) */
 ```
 
 ### Advanced usage
@@ -34,15 +34,15 @@ void sha256_init(SHA256_CTX *ctx);
 void sha256_update(SHA256_CTX *ctx, const void *in, size_t inlen);
 void sha256_final(SHA256_CTX *ctx, void *out);
 /* SHA3 */
-void sha3_init(SHA3_CTX *ctx, int outbitlen);
+void sha3_init(SHA3_CTX *ctx, int outlen);
 void sha3_update(SHA3_CTX *ctx, const void *in, size_t inlen);
 void sha3_final(SHA3_CTX *ctx, void *out);
 /* Keccak */
-void Keccak_init(SHA3_CTX *ctx, int outbitlen);
+void Keccak_init(SHA3_CTX *ctx, int outlen);
 void Keccak_update(SHA3_CTX *ctx, const void *in, size_t inlen);
 void Keccak_final(SHA3_CTX *ctx, void *out);
 /* Blake2b */
-void blake2b_init(BLAKE2B_CTX *ctx, const void *key, int keylen, int outbitlen);
+void blake2b_init(BLAKE2B_CTX *ctx, const void *key, int keylen, int outlen);
 void blake2b_update(BLAKE2B_CTX *ctx, const void *in, size_t inlen);
 void blake2b_final(BLAKE2B_CTX *ctx, void *out);
 ```
@@ -51,8 +51,8 @@ void blake2b_final(BLAKE2B_CTX *ctx, void *out);
 The [Hash Test](test/hashtest.c) file is provided as an example of basic usage and testing, which validates known hashes against several standard test vectors used in [RFC 1321](https://tools.ietf.org/html/rfc1321).
 #### Self Compilation and Execution:
 Self compilation helper files, [testWIN.bat](testWIN.bat) & [testUNIX.bat](testUNIX.bat), are provided for easy compilation and execution of the [Hash Test](testhash.c) file.  
-> testWIN.bat; Tested on x86_64 architecture running Windows 10 Pro v10.0.18362. Requires `Microsoft Visual Studio 2017 Community Edition` installed.
-> testUNIX.sh; Tested on x86_64 architecture running Ubuntu 16.04.1. Requires the `build-essential` package installed
+> testWIN.bat; Requires `Microsoft Visual Studio 2017 Community Edition` installed. Tested on x86_64 architecture running Windows 10 Pro v10.0.18362.  
+> testUNIX.sh; Requires the `build-essential` package installed. Tested on x86_64 architecture running Ubuntu 16.04.1.
 
 ### More information
 Hash lengths and context structs are also provided with each file.  
