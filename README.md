@@ -1,5 +1,5 @@
-# Multi-platform Hash Functions
-Convenient MD2, MD5, SHA1, SHA256, SHA3 (incl. Keccak) and Blake2b multi-platform hash functions for C.
+# Hash Functions
+Convenient MD2, MD5, SHA1, SHA256, SHA3 (incl. Keccak) and Blake2b platform  independant hash functions for C.
 
 ### Basic usage
 Hash functions can be easily used by calling their convenient one-liners...
@@ -50,7 +50,7 @@ void blake2b_final(BLAKE2B_CTX *ctx, void *out);
 ### Example usage
 The [Hash Test](test/hashtest.c) file is provided as an example of basic usage and testing, which validates known hashes against several standard test vectors used in [RFC 1321](https://tools.ietf.org/html/rfc1321).
 #### Self Compilation and Execution:
-Self compilation helper files, [testWIN.bat](testWIN.bat) & [testUNIX.bat](testUNIX.bat), are provided for easy compilation and execution of the [Hash Test](testhash.c) file.  
+Self compilation helper files, [testWIN.bat](testWIN.bat) & [testUNIX.sh](testUNIX.sh), are provided for easy compilation and execution of the [Hash Test](testhash.c) file.  
 > testWIN.bat; Requires `Microsoft Visual Studio 2017 Community Edition` installed. Tested on x86_64 architecture running Windows 10 Pro v10.0.18362.  
 > testUNIX.sh; Requires the `build-essential` package installed. Tested on x86_64 architecture running Ubuntu 16.04.1.
 
